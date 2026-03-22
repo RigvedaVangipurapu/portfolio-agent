@@ -1,0 +1,36 @@
+🚀 Portfolio Automation Agent
+This portfolio is equipped with a GitHub Actions CI/CD Agent that automatically synchronizes my latest projects from various repositories into the showcase section below.
+
+🛠️ How it Works
+The automation follows a Push-to-Sync architecture to ensure this site remains a living document of my technical journey without manual intervention.
+
+1. The Trigger
+
+Whenever a new project repository is created or updated (and tagged with a specific topic or pushed to main), a GitHub Action is triggered in that specific project's repo.
+
+2. The Logic (The Agent)
+
+The agent performs the following steps:
+
+Authentication: Uses a GitHub Fine-grained PAT (Personal Access Token) to securely gain write access to this repository.
+
+Data Extraction: Fetches metadata from the project repository, including:
+
+Repository Name
+
+Description (used as the project blurb)
+
+Topics/Tags (used for filtering)
+
+GitHub URL
+
+Data Transformation: A Python script parses the existing _data/projects.yml file, inserts or updates the project entry, and ensures the YAML structure remains valid.
+
+3. Deployment
+
+Once the _data/projects.yml file is updated and pushed back to this repo, GitHub Pages automatically triggers a new Jekyll build, and the live site updates within seconds.
+
+📂 Project Structure for Automation
+_data/projects.yml: The "Source of Truth" for all displayed projects.
+
+.github/workflows/: Contains the logic for any site-wide maintenance tasks.
