@@ -91,7 +91,7 @@ jobs:
                   break
 
           if not updated:
-              projects.append(new_entry)
+              projects.insert(0, new_entry)
 
           # Serialize back and replace in data.js
           new_array = json.dumps(projects, indent=4)
